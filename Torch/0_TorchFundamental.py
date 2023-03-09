@@ -108,7 +108,81 @@ print(ZEROS[0])
 print("Dims %s" %(ZEROS.ndim))
 print("Shape %s" %str(ZEROS.shape))
 
-
-
 print("################################################# RANDOM TENSOR #######################################")
+print("################################################################################################")
+
+#%%
+print("################################################# Tensor Datatypes #######################################")
+print("################################################################################################")
+print(
+"""
+    Datatypes is one of the 3 big errors 
+    1. Tensors not right datatype
+    2. Tensors not right shape
+    3. Tensors not on the right device
+    
+    Device : where the variable stored ( CPU / GPU ) , perlu sama atau ngga return error
+    requires_grad --> Basically perlu TRACK gradient atau tidak 
+"""
+)
+randtensor : torch.Tensor = torch.rand(size=(3,4), dtype=torch.float32)
+print(randtensor)
+SIMPLETENSOR : torch.Tensor = torch.Tensor([[
+    
+    [2,3,4,3],
+    [34,41,22,3],
+    [3,2,11,2]
+    
+    ],
+    [
+    [21,22,11,32],
+    [33,55,44,32],
+    [331,221,232,2]
+    ]
+    
+    ],
+        device=None
+        )
+
+print(f"Shape : {SIMPLETENSOR.shape}")
+print(f"Dtype : {SIMPLETENSOR.dtype}")
+print(f"Device : {SIMPLETENSOR.device}")
+
+print("################################################# Tensor Datatypes #######################################")
+print("################################################################################################")
+#%%
+
+print("################################################# Tensor Manipulation #######################################")
+print("################################################################################################")
+print("""
+    Basically this topic cuman manipulasi doang , most of operation is ELEMENT WISE
+     - Addition
+     - Substraction
+     - Divison
+     - Multiplication
+     - Matrix multiplication
+    """)
+
+TENSOR_1D : torch.Tensor = torch.Tensor([4,4,3])
+TENSOR_2D_1 : torch.Tensor = torch.Tensor( [[[3,2,1],
+                                             [1,2,3]]])
+TENSOR_2D_2 : torch.Tensor = torch.Tensor( [
+                                            [[4,1],
+                                             [2,2],
+                                             [4,2]],
+                                             ])
+
+TENSOR_2D_1_s : torch.Tensor = torch.Tensor([ [3,4], [4,2]])
+TENSOR_2D_1_s2 : torch.Tensor = torch.Tensor( [[5,3], [3,1]])
+
+print(f"Addition Tensor {TENSOR_1D + 5}") # Same as [4,4,3] + [1,1,1]
+print("Matrix Multiplication")
+print(TENSOR_2D_1.shape) 
+print(TENSOR_2D_2.shape)
+print(TENSOR_2D_1 @ TENSOR_2D_2) # Dot product / Matmul
+
+print("element Wise Matrix ")
+print(TENSOR_2D_1_s + TENSOR_2D_1_s2)
+
+print("################################################# Tensor Manipulation #######################################")
 print("################################################################################################")
