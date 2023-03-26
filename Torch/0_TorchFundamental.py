@@ -186,3 +186,98 @@ print(TENSOR_2D_1_s + TENSOR_2D_1_s2)
 
 print("################################################# Tensor Manipulation #######################################")
 print("################################################################################################")
+
+#%%
+##
+print("################################################# Tensor Aggregation #######################################")
+print("################################################################################################")
+print("""
+        Basically just aggregate whole stuff into 1, Min max kek gitu kan,
+        Mean especially
+""")
+vector_tensor : torch.Tensor = torch.arange(0, 100, 10)
+print("Maximum value  : ", torch.max(vector_tensor))
+print("Minimum value  : ", torch.min(vector_tensor))
+print("Mean value  : ", torch.mean(vector_tensor.type(torch.float64)))
+print("################################################# Tensor Aggregation #######################################")
+print("################################################################################################")
+
+
+#%%
+print("################################################# Tensor Reshaping stacking Squeezing #######################################")
+print("################################################################################################")
+
+print("""       
+    Pada dasarnya this concept can be shortened like so 
+    Reshaping --> Merubah shape tensor menjadi desired tensor
+    View --> MEmberikan pointer yang sama pada passed variabel
+    Stacking $ A, B need to have same shape
+        Stack --> Menumpuk tensor berdasarkan dimensi yang diberikan
+        Vstack --> Menumpuk tensor secara vertikal
+        Hstack --> Menumpuk tensor secara horizontal
+    Squeeze --> Menghapus seluruh '1' dimension pada tensor 
+    Unsqueeze --> Menambahkan '1' dimension pada tensor
+    
+""")
+
+# ( 2,2,3)
+TENSOR_RESHAPE : torch.Tensor = torch.tensor(
+        [ [[2,3,4], [2,3,1]],
+          [[3,2,1], [33,2,1]]
+          ]
+)
+print(TENSOR_RESHAPE.shape)
+## You can use reshape instead of this confusing view 
+x_pointer : torch.Tensor = TENSOR_RESHAPE.view(2,3,2)
+print(x_pointer.shape)
+print(x_pointer)
+print(TENSOR_RESHAPE)
+print("RESHAPING DONE ......")
+
+V_STACK_A : torch.tensor = torch.tensor([
+                                [2],[2],[3]
+                                
+                                ])
+V_STACK_B : torch.tensor = torch.tensor([
+                                [2],[4],[2]
+
+                                ])
+print(V_STACK_A.shape)
+V_STACK_AB : torch.tensor = torch.vstack((V_STACK_A, V_STACK_B))
+H_STACK_AB : torch.tensor = torch.hstack((V_STACK_A, V_STACK_B))
+print(V_STACK_AB)
+print(H_STACK_AB)
+print("V Stack shape ", V_STACK_AB.shape)
+print("H Stack Shape " , H_STACK_AB.shape)
+
+# Shape ( 1, 2, 3, 3)
+SQUEEZED_TENSOR: torch.tensor = torch.tensor(
+    [[
+        [
+            [2, 3, 4], [4, 4, 5], [3, 2, 1],
+         ],
+        [
+            [11, 22, 12], [2, 321, 22], [22, 1, 22]
+        ]
+    ]]
+)
+
+print("Before : " , SQUEEZED_TENSOR.shape)
+print(SQUEEZED_TENSOR)
+SQUEEZED_TENSOR = torch.squeeze(SQUEEZED_TENSOR)
+
+print("After : " , SQUEEZED_TENSOR.shape)
+print(SQUEEZED_TENSOR)
+
+
+print("Before Unsquuezed : " , SQUEEZED_TENSOR.shape)
+print(SQUEEZED_TENSOR)
+SQUEEZED_TENSOR = torch.unsqueeze(SQUEEZED_TENSOR, dim=3)
+
+print("After Unsquuzed : " , SQUEEZED_TENSOR.shape)
+print(SQUEEZED_TENSOR)
+
+print("################################################# Tensor Reshaping stacking Squeezing #######################################")
+print("################################################################################################")
+
+#%%
