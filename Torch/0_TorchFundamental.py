@@ -281,3 +281,60 @@ print("################################################# Tensor Reshaping stacki
 print("################################################################################################")
 
 #%%
+
+print("################################################# Tensor Squeezing & Permuting  #######################################")
+print("################################################################################################")
+##TODO Add Squeezing & Permuting implementation  
+
+#%%
+print("################################################# INDEXING  ( Selecting data from Tensors ) #######################################")
+print("################################################################################################")
+
+x = torch.arange(1, 10).reshape(shape=(1,3,3))
+print(x, x.shape)
+
+print("Indexing the Tensor Section")
+
+print(x[0,0,1]) # get the number 1
+
+print(x[0,2,2]) # get the number 9
+
+print(x[0,1,1]) #get the number  5
+
+print(x[:, 0, :]) # get all 0 dim, and last dim, but only 0 rows
+
+print(x[:, :, 2]) # get all 0 dim, and second dim, but only get the values for the 2 columns
+
+
+print("Indexing the Tensor Section")
+
+print("################################################# INDEXING  ( Selecting data from Tensors ) #######################################")
+print("################################################################################################")
+
+#%%
+
+print("################################################# Numpy Arr to p.tensors ) #######################################")
+print("################################################################################################")
+
+print("""
+       1. Numpy arr and pytorch tensor does not share same memory addr;:w
+       2. Converting from numpy to pytorchtensor --> Default dtype64 ( From numpy ) 
+       3. Likewise, pytorch -> Numpy --> Default dtype32
+
+""")
+arr : np.array = np.arange(1, 10, 1) 
+
+print(arr, arr.dtype)
+
+
+## Convert to pytorch
+torchArr : torch.Tensor = torch.from_numpy(arr) ## COnverting base dtype 64
+## Convert to numpy 
+torchArr.type( torch.float32 ) 
+npArr : np.array = torchArr.numpy() ## Cnverting to numpy dtype base the tensor
+
+print(torchArr, torchArr.dtype)
+
+print(npArr, npArr.dtype)
+
+
